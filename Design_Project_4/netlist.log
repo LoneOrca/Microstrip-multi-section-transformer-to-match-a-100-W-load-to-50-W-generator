@@ -1,0 +1,43 @@
+; Top Design: "Design_Project_4_lib:Microstrip_V2_sn620094_Mstep:schematic"
+; Netlisted using Hierarchy Policy: "Standard"
+
+Options ResourceUsage=yes UseNutmegFormat=no EnableOptim=no TopDesignName="Design_Project_4_lib:Microstrip_V2_sn620094_Mstep:schematic" DcopOutputNodeVoltages=yes DcopOutputPinCurrents=yes DcopOutputAllSweepPoints=no DcopOutputDcopType=0
+Port:Term1  N__2 0 Num=1 Z=50 Ohm Noise=yes 
+Port:Term2  N__0 0 Num=2 Z=100 Ohm Noise=yes 
+S_Param:SP1 CalcS=yes CalcY=no CalcZ=no GroupDelayAperture=1e-4 FreqConversion=no FreqConversionPort=1 StatusLevel=2 CalcNoise=no SortNoise=0 BandwidthForNoise=1.0 Hz DevOpPtLevel=0 SPSS_WSP=yes \
+SweepVar="freq" SweepPlan="SP1_stim" OutputPlan="SP1_Output" 
+
+SweepPlan: SP1_stim Start=0 GHz Stop=16 GHz Step=0.03 GHz 
+
+OutputPlan:SP1_Output \
+      Type="Output" \
+      UseEquationNestLevel=yes \
+      EquationNestLevel=2 \
+      UseSavedEquationNestLevel=yes \
+      SavedEquationNestLevel=2
+
+#load "python","LinearCollapse"
+Component Module="LinearCollapse" Type="ModelExtractor" NetworkRepresentation=2
+
+;#@# autodisplay="S_Params_Quad_dB_Smith"
+model MSub1 MSUB H=0.635 mm Er=10.7 Mur=1 Cond=5.8e+7 Hu=1e+33 mm T=18 um TanD=0.0023 DielectricLossModel=1 FreqForEpsrTanD=1.0 GHz LowFreqForTanD=1.0 kHz HighFreqForTanD=1.0 THz RoughnessModel=2 
+MLIN2:TL1  N__2 N__5 Subst="MSub1" W=W0 L=L0 Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+MLIN2:TL2  N__10 N__6 Subst="MSub1" W=W1 L=L1 Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+MLIN2:TL3  N__8 N__9 Subst="MSub1" W=W2 L=L2 Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+MLIN2:TL4  N__7 N__11 Subst="MSub1" W=W3 L=L3 Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+MLIN2:TL5  N__4 N__0 Subst="MSub1" W=WL L=LL Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+
+W0=0.554162 mm
+L0=3.490710 mm
+W1=0.415484 mm
+L1=3.541880 mm
+W2=0.224515 mm
+L2=3.634570 mm
+W3=0.101513 mm
+L3=3.735550 mm
+WL=0.058710 mm
+LL=3.798950 mm
+MSTEP:Step1  N__5 N__10 Subst="MSub1" W1=W0 W2=W1 
+MSTEP:Step2  N__6 N__8 Subst="MSub1" W1=W1 W2=W2 
+MSTEP:Step3  N__9 N__7 Subst="MSub1" W1=W2 W2=W3 
+MSTEP:Step4  N__11 N__4 Subst="MSub1" W1=W3 W2=WL 

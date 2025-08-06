@@ -1,0 +1,17 @@
+
+hpeesofsim (*) 595.shp Oct 31 2023, MINT version 5
+    (64-bit windows built: Tue Oct 31, 2023 22:23:19 +0000)
+
+
+***** Simulation started at Wed May  1 20:59:47 2024
+      Running on host: "LAPTOP-PGPK6ETP"
+      In Directory: "E:\EE-414-514-Design Project 4\MATLAB & ADS files\Design_Project_4\data"
+      Process ID: 196
+
+
+SP SP1[1] <Design_Project_4_lib:Microstrip_V2_sn620094_Mstep:schematic>   freq=(0 Hz->16 GHz)
+
+
+Resource usage:
+  Total stopwatch time     =     3.85 seconds.
+
